@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Love ❤️</title>
+<style>
+body {
+    background: #080808;
+    color: #ff1744;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+pre {
+    font-size: 12px;
+    text-shadow: 0 0 10px red;
+    white-space: pre;
+}
+</style>
+</head>
+<body>
+<pre id="heart">Loading ❤️</pre>
 
+<script>
+const output = document.getElementById("heart");
+const events = new EventSource("/heart");
+
+events.onmessage = function(event) {
+    output.textContent = event.data;
+};
+
+events.onerror = function() {
+    output.textContent = "Connection lost ❤️";
+};
+</script>
+</body>
+</html>
